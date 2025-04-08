@@ -1,0 +1,17 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run script
+      env:
+        MY_SECRET: ${{ secrets.SESH }}
+      run: |
+        node -e "console.log('My secret is: ' + process.env.MY_SECRET)"
